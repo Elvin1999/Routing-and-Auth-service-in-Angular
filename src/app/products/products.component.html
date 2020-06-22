@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <tr routerLinkActive="router-link-active" *ngFor="let p of products">
+        <td>
+          {{ p.id }}
+        </td>
+        <td class="w-75">
+          {{ p.name }}
+        </td>
+        <td>
+          <a [routerLink]="['/products', p.id]" class="btn btn-primary btn-sm">
+            Details</a
+          >
+          <a
+            [routerLink]="['/products', p.id, 'edit']"
+            class="btn btn-warning btn-sm ml-2"
+          >
+            Edit</a
+          >
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <a
+      [routerLink]="['/products']"
+      [queryParams]="{ page: 1, order: 'bestselling' }"
+      class="btn btn-primary btn-sm"
+    >
+      Best Seller</a
+    >
+    <a
+      [routerLink]="['/products']"
+      [queryParams]="{ page: 1, order: 'newest' }"
+      class="btn btn-primary btn-sm ml-2"
+    >
+      New Products</a
+    >
+    <button (click)="loadProducts()" class="btn btn-primary m-2">
+      Refresh page
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <router-outlet></router-outlet>
+  </div>
+</div>
